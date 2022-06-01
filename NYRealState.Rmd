@@ -1,0 +1,99 @@
+---
+title: "Por definir"
+output: 
+  html_document:
+    css: "styles.css"
+    toc: true
+    theme: paper
+    code_folding: show
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, fig.pos = "H", fig.align = "center")
+library(knitr)
+library(tidyverse)
+library(kableExtra)
+library(leaflet)
+library(sf)
+library(spatstat)
+library(maptools)
+```
+
+# Introducción
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel mi at lorem pellentesque condimentum fringilla sed magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam ut efficitur lorem. Morbi porttitor, ipsum semper suscipit faucibus, nunc enim consectetur est, pulvinar scelerisque risus nisl non nunc. Duis ante tortor, maximus quis facilisis ac, consectetur et nisl. Suspendisse aliquet sodales ex, molestie vestibulum massa finibus eget. Aliquam venenatis tellus tristique, molestie massa vel, eleifend nisl. Fusce iaculis nec leo vitae bibendum. Nullam ornare pellentesque nisl a accumsan. Etiam id efficitur urna, vitae facilisis ligula. Cras eget magna lectus. Quisque vitae lectus tristique, dictum lacus nec, hendrerit sem.
+
+## Visualización de los datos
+
+A continuación se muestra una visualización interactiva de los lugares
+donde se tiene registro de que hubo la venta de una propiedad en la ciudad
+de Nueva York durante el año 2016.
+
+```{r}
+datos <- readRDS("locations.Rds")
+leaflet(data = datos,
+        options = leafletOptions(minZoom = 10, maxZoom = 12)) %>% 
+  addTiles() %>% 
+  addCircleMarkers(lat = ~lat, lng = ~lon, radius = 0.1)
+```
+
+Como se puede apreciar, se tiene una amplia distribución de puntos en toda 
+la ciudad, sin embargo no se ven concentraciones en distintos grados, por lo
+que hablando del proceso Poisson subyacente que se asume para el modelo que se
+desea hacer. Dicho esto se hace necesario evaluar si la intensidad es constante o no,
+en aras de saber como proceder para los siguientes pasos del proceso que está siendo
+llevado a cabo.
+
+```{r}
+load("Contour_Points.RData")
+plot(NY_border, main = "Ubicaciones de los datos\nen la ciudad de Nueva York",
+     axes = T, xaxt = "n", yaxt = "n")
+plot(locations, add = T, pch = 20, col = "red", cex = 0.5)
+```
+
+De la anterior visualización se puede apreciar como ciertas clases de 
+conglomerados (clusters) se forman en las locaciones donde hubo ventas de 
+propiedades, sin embargo no se asevera nada hasta el momento pues un análisis
+más exhaustivo será hecho a continuación.
+
+### Argumento gráfico
+
+Se realiza la división de Nueva York en nueve zonas, trazando tres lineas
+paralelas tanto horizontal como verticalmente, generando el gráfico que
+se muestra a continuación.
+
+```{r}
+ppp.NY <- readRDS("pppNY.Rds")
+qc.NY <- quadratcount(ppp.NY, nx = 3, ny = 3)
+plot(ppp.NY, main = "Conteo por cuadrantes",
+     axes = T, xaxt = "n", yaxt = "n")
+plot(qc.NY, add = T, textargs = list(col = "red"))
+```
+
+De allí se puede observar una disparidad grande respecto al número de ocurrencias
+del proceso en las divisiones generadas sobre la ciudad de Nueva York, donde
+las zonas de mayor actividad son aquellas cercanas al centro de la ciudad y en
+Staten Island.
+
+### Argumento inferencial
+
+Posterior al análisis gráfico, se realiza la prueba de bondad de ajuste $\chi^2$
+para contrastar el siguiente juego de hipótesis.
+
+$$
+\begin{cases}
+\begin{aligned}
+\text{H}_0: &\text{El número de ventas de propiedades por unidad de area es la misma en todo Nueva York} \\
+\text{H}_1: &\text{El número de ventas de propiedades por unidad de area } \textbf{NO}  \text{ es la misma en todo Nueva York}
+\end{aligned}
+\end{cases}
+$$
+
+```{r}
+quadrat.test(ppp.NY)
+```
+
+De allí se obtuvo un valor p del orden de $10^{-16}$ por lo que realmente hay un
+rechazo condundente por parte del test hacia la hipótesis de homogeneidad en el proceso
+y por tanto se está ante un proceso Poisson inhomogéneo.

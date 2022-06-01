@@ -1,0 +1,27 @@
+.html-widget {
+    margin: auto;
+}
+
+p {
+	font-size: 20px;
+}
+
+ul.nav-pills {
+  display: table;
+  margin: 0 auto;
+}
+
+ul#conc>li {
+	font-size: 20px;
+}
+
+caption {
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	color: black;
+}
+
+h1 {
+	text-align: center;
+}
