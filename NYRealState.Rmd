@@ -20,9 +20,14 @@ library(spatstat)
 library(maptools)
 ```
 
+<!-- Simon start -->
 # Introducción
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel mi at lorem pellentesque condimentum fringilla sed magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam ut efficitur lorem. Morbi porttitor, ipsum semper suscipit faucibus, nunc enim consectetur est, pulvinar scelerisque risus nisl non nunc. Duis ante tortor, maximus quis facilisis ac, consectetur et nisl. Suspendisse aliquet sodales ex, molestie vestibulum massa finibus eget. Aliquam venenatis tellus tristique, molestie massa vel, eleifend nisl. Fusce iaculis nec leo vitae bibendum. Nullam ornare pellentesque nisl a accumsan. Etiam id efficitur urna, vitae facilisis ligula. Cras eget magna lectus. Quisque vitae lectus tristique, dictum lacus nec, hendrerit sem.
+Como eleccion para el desarollo en relacion a la tematica de patrones puntuales, se utuliza una base de datos que contiene informacion acerca de la ubicacion en donde se ha realizado una venta de propiedad en la ciudad de NY para el año 2016. Se tiene informacion aecrca de la localizacion, precio, area, tarifa de impuestos y demas. Para el analisis a realizar, se ignorará toda informacion que no sea el precio y locaclizacion (intrinseco a esto ultimo, area). 
+
+Las posibles preguntas de interes pueden relacionarse, dada la variable aleatoria se relacionan con la distribucion de las ventas inmobiliarias; ¿Existe relacion espacial? ¿De que tipo? ¿Es interpretable?, ¿Como?.
+
+La idea
 
 ## Visualización de los datos
 
@@ -97,3 +102,5 @@ quadrat.test(ppp.NY)
 De allí se obtuvo un valor p del orden de $10^{-16}$ por lo que realmente hay un
 rechazo condundente por parte del test hacia la hipótesis de homogeneidad en el proceso
 y por tanto se está ante un proceso Poisson inhomogéneo.
+
+<!-- Simon end  -->
