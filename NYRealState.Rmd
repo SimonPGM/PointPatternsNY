@@ -10,7 +10,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = F, fig.pos = "H", fig.align = "center")
+knitr::opts_chunk$set(echo = T, fig.pos = "H", fig.align = "center")
 library(knitr)
 library(tidyverse)
 library(kableExtra)
