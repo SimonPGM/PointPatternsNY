@@ -20,7 +20,7 @@ library(spatstat)
 library(maptools)
 ```
 
-<!-- Simon start -->
+<!-- Smith start -->
 # Introducción
 
 Como eleccion para el desarollo en relacion a la tematica de patrones puntuales, se utuliza una base de datos que contiene informacion acerca de la ubicacion en donde se ha realizado una venta de propiedad en la ciudad de NY para el año 2016. Se tiene informacion aecrca de la localizacion, precio, area, tarifa de impuestos y demas. Para el analisis a realizar, se ignorará toda informacion que no sea el precio y locaclizacion (intrinseco a esto ultimo, area). 
@@ -28,6 +28,10 @@ Como eleccion para el desarollo en relacion a la tematica de patrones puntuales,
 Las posibles preguntas de interes pueden relacionarse, dada la variable aleatoria se relacionan con la distribucion de las ventas inmobiliarias; ¿Existe relacion espacial? ¿De que tipo? ¿Es interpretable?, ¿Como?.
 
 La idea
+
+<!-- Smith end -->
+
+<!-- Simon start -->
 
 ## Visualización de los datos
 
