@@ -27,7 +27,7 @@ Como eleccion para el desarollo en relacion a la tematica de patrones puntuales,
 
 Las posibles preguntas de interes pueden relacionarse, dada la variable aleatoria se relacionan con la distribucion de las ventas inmobiliarias; ¿Existe relacion espacial? ¿De que tipo? ¿Es interpretable?, ¿Como?.
 
-La idea
+La idea es
 
 <!-- Smith end -->
 
