@@ -108,3 +108,9 @@ rechazo condundente por parte del test hacia la hipótesis de homogeneidad en el
 y por tanto se está ante un proceso Poisson inhomogéneo.
 
 <!-- Simon end  -->
+
+<!-- cristian start -->
+
+# Propiedades de segundo orden
+
+<!-- cristian end -->
