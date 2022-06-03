@@ -109,6 +109,12 @@ y por tanto se está ante un proceso Poisson inhomogéneo.
 
 <!-- Simon end  -->
 
+<!-- Smith start -->
+
+# Estimación de la intensidad via Kernel
+
+<!-- Smith end  -->
+
 <!-- Simon start -->
 
 # Modelos log-lineales para la intensidad
