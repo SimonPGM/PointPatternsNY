@@ -114,3 +114,9 @@ y por tanto se está ante un proceso Poisson inhomogéneo.
 # Modelos log-lineales para la intensidad
 
 <!-- Simon end -->
+
+<!-- cristian start -->
+
+# Propiedades de segundo orden
+
+<!-- cristian end -->
