@@ -39,4 +39,4 @@ vignettes/*.pdf
 .Renviron
 
 #Html files
-.html
+*.html

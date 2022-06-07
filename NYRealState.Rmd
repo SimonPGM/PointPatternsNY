@@ -35,6 +35,21 @@ La idea es
 
 ## Visualización de los datos
 
+Llegados a este punto lo primero que se debe hacer es visualizar el lugar
+en el que se va a trabajar espacialmente, esto con el fin de contextualizar
+al lector.
+
+```{r}
+load("Contour_Points.RData")
+ggplot(data = NY_border) +
+  geom_sf(fill = "cyan") +
+  labs(title = "Mapa de la ciudad de Nueva York") +
+  theme_bw() +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(),
+        title = element_text(hjust = .5, size = 15))
+```
+
+
 A continuación se muestra una visualización interactiva de los lugares
 donde se tiene registro de que hubo la venta de una propiedad en la ciudad
 de Nueva York durante el año 2016.
@@ -55,7 +70,6 @@ en aras de saber como proceder para los siguientes pasos del proceso que está s
 llevado a cabo.
 
 ```{r}
-load("Contour_Points.RData")
 plot(NY_border, main = "Ubicaciones de los datos\nen la ciudad de Nueva York",
      axes = T, xaxt = "n", yaxt = "n")
 plot(locations, add = T, pch = 20, col = "red", cex = 0.5)
@@ -119,7 +133,11 @@ y por tanto se está ante un proceso Poisson inhomogéneo.
 
 # Modelos log-lineales para la intensidad
 
-Luego de haber realizado la estimación de la intensidad a través de kernel
+Luego de haber realizado la estimación de la intensidad a través de kernel,
+se procede a realizar el ajuste de modelos log-lineales para la intensidad
+ya que el modelamiento de esta vía dicho conducto es de gran utilidad cuando
+el proceso es inhomogéneo como es el caso de las ventas de inmuebles en la ciudad
+de Nueva York.
 
 <!-- Simon end -->
 
